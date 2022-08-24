@@ -1,0 +1,27 @@
+#!/bin/zsh
+
+RESOLUTION=800x600
+ID=1  # $DISPLAY NUMBER
+WM=i3 # WINDOW MANAGER
+
+function install_nix { # https://nixos.wiki/wiki/Nix_Installation_Guide
+	unshare --user --pid echo YES;
+	grep CONFIG_USER_NS /boot/config-$(uname -r);
+	mkdir -m 0755 ~/.nix
+	nix-user-chroot ~/.nix bash -c 'curl -L https://nixos.org/nix/install | sh'
+}
+
+function start_xephyr {
+	Xephyr -br -ac -noreset -screen $RESOLUTION :$ID &
+	sleep 2
+	DISPLAY=:$ID $WM
+}
+
+
+while [ True ]; do
+	if   [ "$1" = "-i" -o "$1" = "--install" ]; then install_nix;  shift 1;
+	elif [ "$1" = "-s" -o "$1" = "--start"   ]; then start_xephyr; shift 1;
+	else break;
+	fi
+done
+
