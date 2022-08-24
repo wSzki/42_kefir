@@ -43,7 +43,9 @@ function install_nix { # https://nixos.wiki/wiki/Nix_Installation_Guide
 			nixpkgs.neovim \
 			nixpkgs.fzf    \
 			nixpkgs.nodejs \
-			nixpkgs.ack;
+			nixpkgs.ack    \
+			nixpkgs.rofi   \
+		    nixpkgs.fasd;
 	"
 }
 
