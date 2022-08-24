@@ -29,13 +29,13 @@ function start_xephyr {
 }
 
 function start_nix {
-	$NIX_DIR/nix-user-chroot $NIX_DIR $OYSTER
+	$NIX_DIR/nix-user-chroot $NIX_DIR $OYSTER -c start_xephyr
 }
 
 
 while [ True ]; do
 	if   [ "$1" = "-i" -o "$1" = "--install" ]; then install_nix;  shift 1;
-	elif [ "$1" = "-s" -o "$1" = "--start"   ]; then start_xephyr; shift 1;
+	elif [ "$1" = "-s" -o "$1" = "--start"   ]; then start_nix; shift 1;
 	else break;
 	fi
 done
