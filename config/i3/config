@@ -13,11 +13,8 @@ focus_on_window_activation focus
 font pango:monospace 8
 for_window [class=".*"] border pixel 1
 #gaps inner 8
-gaps left 2
-gaps right 2
-gaps top 5
-gaps bottom 5
 exec --no-startup-id i3-msg "workspace 1"
+exec --no-startup-id xset r rate 250 50
 #exec --no-startup-id
 #exec --no-startup-id clipster -d
 #exec --no-startup-id dockd --daemon
@@ -175,8 +172,8 @@ bindsym $mod+F6 exec xautolock -disable && echo "盛" > ~/.dot/var/xautolock
 # Executables
 bindsym $mod+Shift+Escape exec systemctl suspend
 bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+Shift+Return exec kitty;
-bindsym $mod+Return exec kitty;
+bindsym $mod+Shift+Return exec ~/kefir/st/st;
+bindsym $mod+Return exec ~/kefir/st/st;
 #bindsym $mod+Shift+Return exec st;
 #bindsym $mod+Return split v exec st;
 bindsym $mod+p exec rofi -show run
@@ -188,7 +185,7 @@ bindsym $mod+grave exec rofi -no-config -theme slategreenclip.rasi -modi "clipbo
 #bindsym $mod+Shift+i exec firefox --new-tab ~/.dot/suckless/tab/index.html
 #bindsym $mod+i exec surf -a "@aA" -g -T -z 0.9 ~/.dot/suckless/tab/index.html
 #bindsym $mod+i exec firefox --new-window ~/.mozilla/index.html
-bindsym $mod+i exec librewolf --new-window
+bindsym $mod+i exec firefox --new-window
 #bindsym $mod+i exec firefox
 #bindsym $mod+i exec "chromium --app='file:///home/wsz/.dot/suckless/tab/index.html'"
 #bindsym $mod+i exec "firefox -new-window /home/wsz/.dot/suckless/tab/index.html"
@@ -871,7 +868,7 @@ bar {
 		font pango:scientifica 10
 #tray_output none
 #		workspace_buttons no
-		status_command i3status --config ~/.config/i3/i3status.conf
+		status_command LC_ALL=C i3status --config ~/.config/i3/i3status.conf
 		colors {
 			background #191D20
 				statusline #f9f5d7
@@ -906,25 +903,25 @@ bar {
 #}
 
 # Top
-bar {
-	height 15
-#	i3bar_command i3bar --transparency
-#	mode hide
-#		hidden_state hide
-#		modifier Mod4
-		font pango:scientifica 10
-		tray_output none
-		position top
-		workspace_buttons yes
-		status_command i3blocks -c ~/.config/i3/i3blocks.conf
-		colors {
-			background #191D20
-				focused_workspace #3c3836 #202020 #fabd2f
-				active_workspace #3c3836 #191D20 #d5c4a1
-				inactive_workspace #3c3836 #191D20 #d5c4a1
-				urgent_workspace   #7c6f64 #fabd2f #3c3836
-		}
-}
+#bar {
+	#height 15
+##	i3bar_command i3bar --transparency
+##	mode hide
+##		hidden_state hide
+##		modifier Mod4
+		#font pango:scientifica 10
+		#tray_output none
+		#position top
+		#workspace_buttons yes
+		#status_command i3blocks -c ~/.config/i3/i3blocks.conf
+		#colors {
+			#background #191D20
+				#focused_workspace #3c3836 #202020 #fabd2f
+				#active_workspace #3c3836 #191D20 #d5c4a1
+				#inactive_workspace #3c3836 #191D20 #d5c4a1
+				#urgent_workspace   #7c6f64 #fabd2f #3c3836
+		#}
+#}
 
 
 # Top

@@ -43,34 +43,6 @@ call wilder#setup({
 			\ 'modes': [':', '/', '?'],
 			\ })
 
-call wilder#set_option('pipeline', [
-			\   wilder#branch(
-			\     wilder#cmdline_pipeline({
-			\       'hide_in_substitute': 1,
-			\       'fuzzy': 1,
-			\       'set_pcre2_pattern': 1,
-			\     }),
-			\     wilder#python_search_pipeline({
-			\       'pattern': 'fuzzy',
-			\     }),
-			\   ),
-			\ ])
-
-call wilder#set_option('renderer', wilder#wildmenu_renderer(
-			\ wilder#wildmenu_airline_theme({
-			\   'highlights': {},
-			\   'highlighter': wilder#basic_highlighter(),
-			\   'separator': ' · ',
-			\ })))
-
-nnoremap / :call WilderStart()<CR>
-function! WilderStart()
-	call wilder#start_from_normal_mode()
-	ScrollViewDisable
-	call feedkeys('/', 'n')
-endfunction
-autocmd CmdlineLeave * ScrollViewEnable
-
 let s:highlighters = [
 "\ wilder#pcre2_highlighter(),
 			\ wilder#basic_highlighter(),

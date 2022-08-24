@@ -95,7 +95,7 @@ Plug 'nvim-lua/plenary.nvim'    " Nvim additional functions
 Plug 'nacro90/numb.nvim'        " Peek at line search
 Plug 'karb94/neoscroll.nvim'    " Smooth scrolling
 Plug 'dstein64/nvim-scrollview' " Scrollbar
-Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
+"Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 
 Plug 'nathom/filetype.nvim' " Unnsure if useful, reduce startup time
 

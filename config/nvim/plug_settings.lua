@@ -104,40 +104,40 @@ vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')
 -- ### BUFFERLINE
 -- ##########################
 
-require'bufferline'.setup{
-	highlights = {
-		fill = {
-			fg = '#fabd2f',
-			bg = '#191d20',
-		},
-	},
-	options = {
-		diagnostics             = "coc",
-		show_buffer_icons       = false,
-		show_close_icon         = false,
-		show_buffer_close_icons = false,
-		show_tab_indicators     = false,
-		separator_style         = {"", ""},
-		indicator_icon          = '',
-		buffer_close_icon       = '',
-		modified_icon           = '●',
-		close_icon              = '',
-		left_trunc_marker       = '',
-		right_trunc_marker      = '',
+--require'bufferline'.setup{
+	--highlights = {
+		--fill = {
+			--fg = '#fabd2f',
+			--bg = '#191d20',
+		--},
+	--},
+	--options = {
+		--diagnostics             = "coc",
+		--show_buffer_icons       = false,
+		--show_close_icon         = false,
+		--show_buffer_close_icons = false,
+		--show_tab_indicators     = false,
+		--separator_style         = {"", ""},
+		--indicator_icon          = '',
+		--buffer_close_icon       = '',
+		--modified_icon           = '●',
+		--close_icon              = '',
+		--left_trunc_marker       = '',
+		--right_trunc_marker      = '',
 
-		diagnostics_indicator = function(count, level, diagnostics_dict, context)
-			local icon = level:match("error") and "  " or "  "
-			return " " .. count .. icon
-		end,
-		offsets = {
-			{
-				filetype   = "neo-tree",
-				text       = "",
-				text_align = "left"
-			}
-		}
-	}
-}
+		--diagnostics_indicator = function(count, level, diagnostics_dict, context)
+			--local icon = level:match("error") and "  " or "  "
+			--return " " .. count .. icon
+		--end,
+		--offsets = {
+			--{
+				--filetype   = "neo-tree",
+				--text       = "",
+				--text_align = "left"
+			--}
+		--}
+	--}
+--}
 
 -- ##########################
 -- ### NEO SCROLL
