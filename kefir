@@ -22,13 +22,13 @@ function install_nix { # https://nixos.wiki/wiki/Nix_Installation_Guide
 	./nix-user-chroot $NIX_DIR bash -c 'curl -L https://nixos.org/nix/install | sh'
 }
 
-function start_xephyr {
+start_xephyr() {
 	Xephyr -br -ac -noreset -screen $RESOLUTION :$ID &
 	sleep 2
 	DISPLAY=:$ID $WM
 }
 
-function start_nix {
+start_nix() {
 	$NIX_DIR/nix-user-chroot $NIX_DIR $OYSTER -c start_xephyr
 }
 
