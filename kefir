@@ -19,7 +19,7 @@ function install_nix { # https://nixos.wiki/wiki/Nix_Installation_Guide
 	wget $NUC_SRC/$NUC_BIN
 	mv $NUC_BIN nix-user-chroot
 	chmod +x ./nix-user-chroot
-	./nix-user-chroot $NIX_DIR bash -c 'curl -L https://nixos.org/nix/install | sh'
+	./nix-user-chroot $NIX_DIR $OYSTER -c 'curl -L https://nixos.org/nix/install | sh'
 }
 
 
@@ -31,6 +31,7 @@ COMMAND="
 
 function start_nix() {
 	$NIX_DIR/nix-user-chroot $NIX_DIR $OYSTER -c $COMMAND
+	#$NIX_DIR/nix-user-chroot $NIX_DIR $OYSTER
 }
 
 
