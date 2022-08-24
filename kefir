@@ -9,8 +9,9 @@ function install_nix { # https://nixos.wiki/wiki/Nix_Installation_Guide
 	grep CONFIG_USER_NS /boot/config-$(uname -r);
 	mkdir -m 0755 ~/.nix
 	cd ~/.nix
-	wget https://github.com/nix-community/nix-user-chroot/releases/download/1.2.2/nix-user-chroot-bin-1.2.2-x86_64-unknown-linux-musl
-	mv nix-user-chroot* nix-user-chroot
+	wget "https://github.com/nix-community/nix-user-chroot/releases/download/1.2.2/nix-user-chroot-bin-1.2.2-x86_64-unknown-linux-musl"
+	mv "nix-user-chroot-bin-1.2.2-x86_64-unknown-linux-musl" nix-user-chroot
+	chmod +x ./nix-user-chroot
 	./nix-user-chroot ~/.nix bash -c 'curl -L https://nixos.org/nix/install | sh'
 }
 
