@@ -33,11 +33,11 @@ function install_nix { # https://nixos.wiki/wiki/Nix_Installation_Guide
 	# Install i3, fzf, ack, neovim
 	$NIX_DIR/nix-user-chroot $NIX_DIR $OYSTER -c "
 	. $HOME/.nix-profile/etc/profile.d/nix.sh;
-	nix-env -iA
-		nixpkgs.i3
-		nixpkgs.neovim
-		nixpkgs.fzf
-		nixpkgs.nodejs
+	nix-env -iA \
+		nixpkgs.i3 \
+		nixpkgs.neovim \
+		nixpkgs.fzf \
+		nixpkgs.nodejs \
 		nixpkgs.ack;
 	"
 }
