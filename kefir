@@ -21,13 +21,24 @@ function install_nix { # https://nixos.wiki/wiki/Nix_Installation_Guide
 	grep CONFIG_USER_NS /boot/config-$(uname -r);
 	mkdir -m 0755 $NIX_DIR
 	cd $NIX_DIR
+
+	# Getting nix-user-chroot binary
 	wget $NUC_SRC/$NUC_BIN
 	mv $NUC_BIN nix-user-chroot
 	chmod +x ./nix-user-chroot
+
+	# Install nix
 	./nix-user-chroot $NIX_DIR $OYSTER -c 'curl -L https://nixos.org/nix/install | sh'
+
+	# Install i3, fzf, ack, neovim
 	$NIX_DIR/nix-user-chroot $NIX_DIR $OYSTER -c "
 	. $HOME/.nix-profile/etc/profile.d/nix.sh;
-	nix-env -iA nixpkgs.i3;
+	nix-env -iA
+		nixpkgs.i3
+		nixpkgs.neovim
+		nixpkgs.fzf
+		nixpkgs.nodejs
+		nixpkgs.ack;
 	"
 }
 
