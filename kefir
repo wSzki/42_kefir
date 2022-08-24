@@ -4,6 +4,11 @@ RESOLUTION=800x600
 ID=1  # $DISPLAY NUMBER
 WM=i3 # WINDOW MANAGER
 OYSTER=zsh # Can i use $SHELL?
+XEPHYR_START="
+	Xephyr -br -ac -noreset -screen $RESOLUTION :$ID &
+	sleep 2
+	DISPLAY=:$ID $WM
+"
 
 # nix-user-chroot source
 NUC_SRC="https://github.com/nix-community/nix-user-chroot/releases/download/1.2.2"
@@ -20,19 +25,11 @@ function install_nix { # https://nixos.wiki/wiki/Nix_Installation_Guide
 	mv $NUC_BIN nix-user-chroot
 	chmod +x ./nix-user-chroot
 	./nix-user-chroot $NIX_DIR $OYSTER -c 'curl -L https://nixos.org/nix/install | sh'
+	$NIX_DIR/nix-user-chroot $NIX_DIR $OYSTER -c "nix-env -iA nixpkgs.i3"
 }
 
 
-COMMAND="
-	Xephyr -br -ac -noreset -screen $RESOLUTION :$ID &
-	sleep 2
-	DISPLAY=:$ID $WM
-"
-
-function start_nix() {
-	$NIX_DIR/nix-user-chroot $NIX_DIR $OYSTER -c $COMMAND
-	#$NIX_DIR/nix-user-chroot $NIX_DIR $OYSTER
-}
+function start_nix() { $NIX_DIR/nix-user-chroot $NIX_DIR $OYSTER -c $XEPHYR_START}
 
 
 while [ True ]; do
