@@ -28,17 +28,22 @@ function install_nix { # https://nixos.wiki/wiki/Nix_Installation_Guide
 	chmod +x ./nix-user-chroot
 
 	# Install nix
+	echo "INSTALLING NIX... THIS WILL TAKE A COUPLE MINUTES" && sleep 5;
 	./nix-user-chroot $NIX_DIR $OYSTER -c 'curl -L https://nixos.org/nix/install | sh'
 
-	# Install i3, fzf, ack, neovim
+	# Install i3, fzf, ack, neovim, nodejs for cocnvim
 	$NIX_DIR/nix-user-chroot $NIX_DIR $OYSTER -c "
-	. $HOME/.nix-profile/etc/profile.d/nix.sh;
-	nix-env -iA \
-		nixpkgs.i3 \
-		nixpkgs.neovim \
-		nixpkgs.fzf \
-		nixpkgs.nodejs \
-		nixpkgs.ack;
+
+		# /!\ Care for the dot "."
+		. $HOME/.nix-profile/etc/profile.d/nix.sh;
+
+		# Install packages
+		nix-env -iA        \
+			nixpkgs.i3     \
+			nixpkgs.neovim \
+			nixpkgs.fzf    \
+			nixpkgs.nodejs \
+			nixpkgs.ack;
 	"
 }
 
